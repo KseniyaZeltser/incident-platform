@@ -1,18 +1,23 @@
 package com.kseniya.incidentplatform.controller;
 
+import com.kseniya.incidentplatform.dto.CreateIncidentRequest;
 import com.kseniya.incidentplatform.model.Incident;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.kseniya.incidentplatform.service.IncidentService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/api/incidents")
 public class IncidentController {
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Incident Platform is running!";
+    private final IncidentService incidentService;
+
+    public IncidentController(IncidentService incidentService) {
+        this.incidentService = incidentService;
     }
 
-    @GetMapping("/api/incidents/test")
+    @GetMapping("/test")
     public Incident testIncident() {
         return new Incident(
                 1L,
@@ -20,5 +25,15 @@ public class IncidentController {
                 "HTTP_500",
                 "OPEN"
         );
+    }
+
+    @PostMapping
+    public Incident createIncident(@RequestBody CreateIncidentRequest request) {
+        return incidentService.createIncident(request);
+    }
+
+    @GetMapping
+    public List<Incident> getAllIncidents() {
+        return incidentService.getAllIncidents();
     }
 }
