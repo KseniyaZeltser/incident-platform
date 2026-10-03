@@ -41,4 +41,9 @@ public class IncidentController {
     public Incident getIncidentById(@PathVariable Long id) {
         return incidentService.getIncidentById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteIncident(@PathVariable Long id) {
+        incidentService.deleteIncident(id);
+    }
 }

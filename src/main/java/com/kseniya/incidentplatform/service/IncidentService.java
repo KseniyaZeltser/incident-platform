@@ -44,4 +44,16 @@ public class IncidentService {
 
         throw new IncidentNotFoundException(id);
     }
+
+    public void deleteIncident(Long id) {
+
+        for (Incident incident : incidents) {
+            if (incident.getId().equals(id)) {
+                incidents.remove(incident);
+                return;
+            }
+        }
+
+        throw new IncidentNotFoundException(id);
+    }
 }
