@@ -36,4 +36,9 @@ public class IncidentController {
     public List<Incident> getAllIncidents() {
         return incidentService.getAllIncidents();
     }
+
+    @GetMapping("/{id}")
+    public Incident getIncidentById(@PathVariable Long id) {
+        return incidentService.getIncidentById(id);
+    }
 }

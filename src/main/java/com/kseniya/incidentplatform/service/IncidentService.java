@@ -32,4 +32,15 @@ public class IncidentService {
     public List<Incident> getAllIncidents() {
         return incidents;
     }
+
+    public Incident getIncidentById(Long id) {
+
+        for (Incident incident : incidents) {
+            if (incident.getId().equals(id)) {
+                return incident;
+            }
+        }
+
+        return null;
+    }
 }
