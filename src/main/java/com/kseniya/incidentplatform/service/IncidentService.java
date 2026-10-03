@@ -1,5 +1,6 @@
 package com.kseniya.incidentplatform.service;
 
+import com.kseniya.incidentplatform.exception.IncidentNotFoundException;
 import com.kseniya.incidentplatform.dto.CreateIncidentRequest;
 import com.kseniya.incidentplatform.model.Incident;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,6 @@ public class IncidentService {
             }
         }
 
-        return null;
+        throw new IncidentNotFoundException(id);
     }
 }
